@@ -18,4 +18,26 @@ function getHumanChoice() {
   return choice;
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
+  computerChoice = computerChoice.toLowerCase();
+
+  if (humanChoice === computerChoice) {
+    return "It's a draw!";
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "scissors" && computerChoice === "paper") ||
+    (humanChoice === "paper" && computerChoice === "rock")
+  ) {
+    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    humanScore++;
+  } else {
+    console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
+    computerScore++;
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection)
